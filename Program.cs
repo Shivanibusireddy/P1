@@ -20,6 +20,7 @@ Console.WriteLine("Please enter your age");
 var age = Console.ReadLine();
 Console.WriteLine("Please enter your Phone number eg:+1-838-844-090");
 string phonenum = Console.ReadLine();
+Console.WriteLine($"These are your details Name:{name} \t Age: {age} \t Phone Number: {phonenum}");
 do{
     Console.WriteLine("These are the different models available now");
     for (int i =0;i<carmodel.Length;i
@@ -57,6 +58,8 @@ do{
                 Console.WriteLine($"{carmodel[i]} : {price[x]}");
             }
         }
+        
+
 
     
 
