@@ -9,7 +9,7 @@ namespace P1
             Console.WriteLine("Hello User! Welcome to Haguar  Car Company");
 // Declare and use a bool, int, double, char, string, and decimal type.
 bool buyNow = false;
-string[] carmodel = {"X8","F-Type","X9","P-Type"};
+string[] carmodel = {"X8","FType","X9","PType"};
 double[]  price = {25000,38000,78000,98000};
 double discount = 8.55;
 char quit = 'q';
@@ -23,10 +23,12 @@ string phonenum = Console.ReadLine();
 Console.WriteLine($"These are your details Name:{name} \t Age: {age} \t Phone Number: {phonenum}");
 do{
     Console.WriteLine("These are the different models available now");
-    for (int i =0;i<carmodel.Length;i
-    ++){
+    for (int i =0;i<carmodel.Length;i++){
         Console.WriteLine($" Car Model Name: {carmodel[i]}");
+       
     }
+    int avail = carmodel.Length;
+     Console.WriteLine($" Total number of models available are {avail}");
     Console.WriteLine("Do you want to buy the car within 30 days please enter true or false");
     buyNow = Convert.ToBoolean(Console.ReadLine());
     if(buyNow == true){
@@ -35,7 +37,7 @@ do{
          decimal newCost(double oldPrice){
 
             decimal newPrice;
-            newPrice = (decimal)(oldPrice - (oldPrice*discount)/100);
+            newPrice = (decimal)(oldPrice - discountcal(oldPrice));
              return newPrice;
             //  var newPrice[];
             //  for (int j=0; j< price.Length;j++){
@@ -44,6 +46,10 @@ do{
              
             
         }
+        double discountcal(double prevPrice){
+
+            return (prevPrice*discount)/100;
+        }
          Console.WriteLine("Now the price of all the cars differ as follows");
         for (int i =0;i<price.Length;i++)
              {
@@ -51,11 +57,34 @@ do{
                   Console.WriteLine($"{carmodel[i]} : {newCost(price[i])}");
 
              }
+             Console.WriteLine("Do you want to check what is the discount for each Model");
+             bool check = Convert.ToBoolean(Console.ReadLine());
+             if (check == true) {
+                 Console.WriteLine("Please enter the first two letters of the model name eg:FT for FType model");
+                 var ans = Console.ReadLine();
+                 switch(ans) {
+                     case "X8": 
+                     Console.WriteLine($" Discount for the X8 phone is: {discountcal(price[0])} \n");
+                     break;
+                     case "FT": 
+                     Console.WriteLine($" Discount for the X8 phone is: {discountcal(price[1])}");
+                     break;
+                     case "X9": 
+                     Console.WriteLine($" Discount for the X8 phone is: {discountcal(price[2])}");
+                     break;
+                     case "PT": 
+                     Console.WriteLine($" Discount for the X8 phone is: {discountcal(price[3])}");
+                     break;
+                     
+
+                 }
+             }
+
     }
         else{
             Console.WriteLine("Prices of the different models without discount are as follows");
             for(int x=0;x<price.Length;x++){
-                Console.WriteLine($"{carmodel[i]} : {price[x]}");
+                Console.WriteLine($"{carmodel[x]} : {price[x]}");
             }
         }
         
